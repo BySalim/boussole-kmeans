@@ -1,0 +1,128 @@
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+  html,
+  body,
+  #racine {
+    height: 100%;
+  }
+  body {
+    margin: 0;
+    background: var(--fond);
+    color: var(--encre);
+    font-family: var(--police);
+    font-size: var(--taille-texte);
+    line-height: 1.5;
+    font-variant-numeric: tabular-nums;
+    -webkit-font-smoothing: antialiased;
+    -webkit-tap-highlight-color: transparent;
+    overflow: hidden;
+  }
+  h1,
+  h2,
+  h3,
+  p,
+  ul,
+  ol,
+  dl,
+  dd,
+  figure,
+  fieldset {
+    margin: 0;
+    padding: 0;
+  }
+  ul,
+  ol {
+    list-style: none;
+  }
+  fieldset {
+    border: 0;
+    min-width: 0;
+  }
+  legend {
+    padding: 0;
+  }
+  h1 {
+    font-size: var(--taille-titre);
+    font-weight: 680;
+    font-stretch: 92%;
+    line-height: 1.15;
+    letter-spacing: -0.012em;
+    text-wrap: balance;
+  }
+  h2 {
+    font-size: var(--taille-section);
+    font-weight: 640;
+    line-height: 1.3;
+  }
+  h3 {
+    font-size: var(--taille-texte);
+    font-weight: 620;
+  }
+  small {
+    font-size: var(--taille-petite);
+    color: var(--encre-3);
+  }
+  a {
+    color: inherit;
+    text-decoration-color: var(--trait-fort);
+    text-underline-offset: 3px;
+  }
+  a:hover {
+    text-decoration-color: currentColor;
+  }
+  button,
+  input {
+    font: inherit;
+    color: inherit;
+  }
+  button {
+    border: 0;
+    background: none;
+    padding: 0;
+    cursor: pointer;
+    touch-action: manipulation;
+  }
+  button:disabled {
+    cursor: default;
+  }
+  svg {
+    flex: none;
+  }
+  svg text {
+    font-family: var(--police);
+  }
+  :focus-visible {
+    outline: 2px solid var(--encre);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+  :focus:not(:focus-visible) {
+    outline: none;
+  }
+  ::selection {
+    background: color-mix(in srgb, var(--groupe-4) 30%, transparent);
+  }
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--encre-4) transparent;
+  }
+  noscript {
+    display: block;
+    padding: 40px;
+  }
+  .hors-ecran {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+  }
+}

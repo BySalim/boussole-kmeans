@@ -1,0 +1,18 @@
+# Environnements et dépendances
+.venv/
+node_modules/
+__pycache__/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Site assemblé, données de travail et code d'accès
+application/frontend/dist/
+application/donnees/
+Explication-notebook-K-Means.pdf
+application/.env
+*.tsbuildinfo
+
+# Outils
+.outils/
+.wrangler/
+.gradio/

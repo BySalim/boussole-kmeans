@@ -1,0 +1,7 @@
+@layer tokens, base, composants, pages;
+
+@import "@fontsource-variable/archivo/wdth.css";
+@import "./tokens.css";
+@import "./base.css";
+@import "./composants.css";
+@import "./pages.css";
