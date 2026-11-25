@@ -8,7 +8,12 @@ from fastapi.responses import FileResponse, JSONResponse, PlainTextResponse
 from .erreurs import ErreurMetier
 from .config import DOSSIER_SITE
 from .routes import organisation, simulation
+from .travail import Travail, modele_de_reference
 
+
+# Prêt avant la première visite.
+modele_de_reference()
+Travail().situation()
 
 app = FastAPI(title="Boussole", version="1.0.0", docs_url="/api/docs", openapi_url="/api/openapi.json", redoc_url=None)
 app.add_middleware(GZipMiddleware, minimum_size=1000)

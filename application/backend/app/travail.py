@@ -5,6 +5,7 @@ Le serveur ne garde rien d'un visiteur. Il retient seulement les derniers calcul
 
 import threading
 from collections import OrderedDict
+from functools import lru_cache
 
 import numpy as np
 import pandas as pd
@@ -20,6 +21,7 @@ from .schemas import Configuration, Contexte
 TAILLE_CACHE = 300
 _cache: OrderedDict[tuple, object] = OrderedDict()
 _verrou = threading.Lock()
+_verrou_reference = threading.Lock()
 
 
 def _memoriser(cle: tuple, calcul):
@@ -115,10 +117,12 @@ class Travail:
         }
 
 
-def modele_de_reference() -> dict:
-    def entrainer():
-        donnees = Travail()
-        ajustement = ajuster(donnees.tableau(), Configuration())
-        return {**donnees.entrainer(Configuration()), "parametres_lus": ajustement.parametres()}
+@lru_cache
+def _entrainer_la_reference() -> dict:
+    ajustement = ajuster(Travail().tableau(), Configuration())
+    return {**Travail().entrainer(Configuration()), "parametres_lus": ajustement.parametres()}
 
-    return _memoriser(("modele de reference",), entrainer)
+
+def modele_de_reference() -> dict:
+    with _verrou_reference:
+        return _entrainer_la_reference()
